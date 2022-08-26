@@ -1,14 +1,15 @@
 /** @type {import('next').NextConfig} */
 
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
+const API_KEY = process.env.API_KEY;
 
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
+  swcMinify: true,
   async redirects() {
     return [
       {
-        source: "/old-blog/:path*",
-        destination: "/new-sexy-blog/:path*",
+        source: "/old/:path*",
+        destination: "/new/:path*",
         permanent: false,
       },
     ];
@@ -22,3 +23,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
