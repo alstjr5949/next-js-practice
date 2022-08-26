@@ -5,8 +5,13 @@ export default function Home() {
   const [movies, setMovies] = useState();
 
   useEffect(() => {
+    const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
     (async () => {
-      const { results } = await (await fetch("/api/movies")).json();
+      const { results } = await (
+        await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+        )
+      ).json();
       setMovies(results);
     })();
   }, []);
